@@ -1,0 +1,12 @@
+/bin/
+.project
+.classpath
+.settings
+.gitattributes
+alvisfile.alvis
+inclusive_gateway.alvis
+nclusive_gateway.bpmn
+multi_task.alvis
+sim_task.alvis
+simple_task.alvis
+simple_task.bpmn

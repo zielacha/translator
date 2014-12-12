@@ -16,7 +16,7 @@ public class Main{
   public static void main(String args[])throws XPathExpressionException, ParserConfigurationException, SAXException, IOException {
     StaXParser read = new StaXParser();
     List<Item> readConfig = read.readConfig("simple_task.bpmn");
-
+    
     for (Item item : readConfig) {
       System.out.println(item);
     } 

@@ -86,7 +86,6 @@ public class createXML {
 					}
 					for (int i = 0; i < it.getOutgoing().size(); i++ ){
 						Port p = ag.getPort(ag.getPortNum());
-//						p.setid(ag.getPortId(ag.getPortNum()));
 						p.setName("port_" + String.valueOf(ag.getPortNum()), ag);
 						Element port = doc.createElement("port");
 						agent.appendChild(port);
@@ -129,7 +128,7 @@ public class createXML {
 							port.setAttribute("x", p.getX());
 							port.setAttribute("y", p.getY());
 						}
-//						agS.setOutgoing(it.getOutgoing());
+
 						for (int i = 0; i < suma - 1 ; i++){
 							Connection conne = null;
 							String out = it.getOutgoing().get(i);
@@ -239,7 +238,7 @@ public class createXML {
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
-			StreamResult result = new StreamResult(new File("D:\\Studia\\Ania\\translator\\alvisfile.alvis"));
+			StreamResult result = new StreamResult(new File("D:\\java\\alvisfile.alvis"));
 
 			// Output to console for testing
 			// StreamResult result = new StreamResult(System.out);
