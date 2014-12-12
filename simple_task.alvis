@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE alvisproject PUBLIC "alvisPublicId-v0.1" "alvisSystemId-v0.1">
+<alvisproject>
+<hierarchy>
+<node agent="" name="System"/>
+</hierarchy>
+<page name="System">
+<agent active="1" height="100.0" index="1" name="start" running="0" width="140.0" x="80.0" y="90.0">
+<port id="149538503" name="o1" x="1.0" y="0.6000000000000001"/>
+</agent>
+<agent active="1" height="100.0" index="1" name="simple_task" running="0" width="140.0" x="270.0" y="90.0">
+<port id="1943364908" name="&lt;p style=&quot;margin-top: 0&quot;&gt;&#13;&lt;br&gt;      i1&#13;&lt;br&gt;    &lt;/p&gt;" x="0.0" y="0.6"/>
+<port id="1518361263" name="o2" x="1.0" y="0.6"/>
+</agent>
+<agent active="1" height="100.0" index="1" name="end" running="0" width="140.0" x="470.0" y="90.0">
+<port id="945583071" name="i2" x="0.0" y="0.6000000000000001"/>
+</agent>
+<connection direction="target" source="1518361263" style="straight" target="945583071"/>
+<connection direction="target" source="149538503" style="straight" target="1943364908"/>
+</page>
+<code>--start 
+out o1;
+
+--simple_task
+in i1;
+out o2;
+
+--end
+in i2;</code>
+</alvisproject>
+
