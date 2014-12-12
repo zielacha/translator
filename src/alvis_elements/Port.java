@@ -32,11 +32,7 @@ public class Port {
 	}
 	
 	
-<<<<<<< HEAD
 	public int getid(){
-=======
-	public int getid (){
->>>>>>> 1f69f824b47d44c36251d9491b5a141aa5eb347b
 		return id;
 	}
 	public void setid(int id){

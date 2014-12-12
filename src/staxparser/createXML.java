@@ -117,9 +117,13 @@ public class createXML {
 						Agent agS = findAgentById(sQ.getsourceref(), agents);		
 						//create ports
 						int suma = it.sum_of_going(sQ.getsourceref());
-						for(int i = 0; i < suma -2; i++){
-							Port p = agS.getPort(agS.getPortNum()-2);
+						for(int i = 0; i < suma - 2; i++){
+							Port p = new Port();
 							p.setName("port_" + String.valueOf(agS.getPortNum()), agS);
+							agS.addPort(p);
+						}
+						for(int i = 2; i < agS.getPorts().size(); i++){
+							Port p = agS.getPort(i);
 							Element port = doc.createElement("port");
 							Element agent = findAgentElem(agS.getname(), docAgents);
 							agent.appendChild(port); 
@@ -128,7 +132,7 @@ public class createXML {
 							port.setAttribute("x", p.getX());
 							port.setAttribute("y", p.getY());
 						}
-
+//create connection 
 						for (int i = 0; i < suma - 1 ; i++){
 							Connection conne = null;
 							String out = it.getOutgoing().get(i);
@@ -151,9 +155,7 @@ public class createXML {
 								if(stop)
 									break;
 							}
-						}
-//						//create connection 
-									
+						}						
 					}
 					else if (((gateway) it).getGatewayDirection().equals("Converging") ){
 						String out = it.getOutgoing().get(0); 
@@ -161,9 +163,13 @@ public class createXML {
 						Agent agT = findAgentById(sQ.gettargetref(), agents);		
 						//create ports
 						int suma = it.sum_of_going(sQ.getsourceref());
-						for(int i = 0; i < suma -2; i++){
-							Port p = agT.getPort(agT.getPortNum()-2);
+						for(int i = 0; i < suma - 2; i++){
+							Port p = new Port();
 							p.setName("port_" + String.valueOf(agT.getPortNum()), agT);
+							agT.addPort(p);
+						}
+						for(int i = 2; i < agT.getPorts().size(); i++){
+							Port p = agT.getPort(i);
 							Element port = doc.createElement("port");
 							Element agent = findAgentElem(agT.getname(), docAgents);
 							agent.appendChild(port); 
@@ -172,15 +178,30 @@ public class createXML {
 							port.setAttribute("x", p.getX());
 							port.setAttribute("y", p.getY());
 						}
-						for (int i = 0; i < suma ; i++){
-							String incoming = ((gateway) it).getIncoming().get(0);
-							sequenceFlow seqFlow = (sequenceFlow) findItemById(incoming, items);
-							String source = seqFlow.getsourceref();
-							Agent ag = findAgentById(source, agents); 
-							Element agent = findAgentElem(ag.getname(), docAgents);
-						}
-						//create connection 						
-						
+//create connection 						
+						for (int i = 0; i < suma - 1 ; i++){
+							Connection conne = null;
+							out = it.getIncoming().get(i);
+							sequenceFlow sQ2 = (sequenceFlow) findItemById(out, items);
+							Agent agS = findAgentById(sQ2.getsourceref(), agents); 
+							boolean stop = false;
+							for(Port p : agT.getPorts()){
+								if(p.isFree()){
+									for(Port p2: agS.getPorts()){
+										if(p2.isFree()){
+											p.setIsFree(false);
+											p2.setIsFree(false);
+											conne = new Connection(p2.getid(), p.getid());
+											connList.add(conne);
+											stop = true;
+											break;
+										}
+									}
+								}
+								if(stop)
+									break;
+							}
+						}							
 					}
 				}
 // connections
@@ -208,13 +229,6 @@ public class createXML {
 								}
 							}
 						}
-//						// connection element
-//						Element connect = doc.createElement("connection");
-//						page.appendChild(connect);
-//						connect.setAttribute("direction", conne.getdirection());
-//						connect.setAttribute("source", conne.getsource());
-//						connect.setAttribute("style", conne.getstyle());
-//						connect.setAttribute("target", conne.gettarget());	
 					}
 				}
 			}

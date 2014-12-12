@@ -158,4 +158,8 @@ public class Agent {
 	public List<Port> getPorts() {
 		return ports;
 	}
+	
+	public void addPort(Port p){
+		ports.add(p);
+	}
 }
