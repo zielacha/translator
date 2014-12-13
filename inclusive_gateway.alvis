@@ -1,49 +1,77 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE alvisproject PUBLIC "alvisPublicId-v0.1" "alvisSystemId-v0.1">
 <alvisproject>
 <hierarchy>
 <node agent="" name="System"/>
 </hierarchy>
 <page name="System">
-<agent active="1" height="100.0" index="1" name="start event" running="0" width="140.0" x="40.0" y="110.0">
-<port id="1179219189" name="port_0" x="1.0" y="0.2"/>
+<agent active="1" height="30.0" index="1" name="Agent_0" running="0" width="30.0" x="75.0" y="210.0">
+<port id="1318526090" name="port_0" x="0.0" y="0.0"/>
 </agent>
-<agent active="1" height="100.0" index="1" name="takie pierwsze" running="0" width="140.0" x="220.0" y="110.0">
-<port id="1117465748" name="port_0" x="0.0" y="0.2"/>
-<port id="1223914230" name="port_1" x="1.0" y="0.2"/>
-<port id="780927604" name="port_2" x="1.0" y="0.5"/>
-<port id="1069591289" name="port_3" x="1.0" y="0.8"/>
+<agent active="1" height="80.0" index="1" name="takie pierwsze" running="0" width="100.0" x="150.0" y="185.0">
+<port id="1628029794" name="port_0" x="0.0" y="0.0"/>
+<port id="2052165701" name="port_1" x="0.0" y="0.0"/>
+<port id="572694894" name="port_2" x="0.0" y="0.0"/>
+<port id="1187126081" name="port_3" x="0.0" y="0.0"/>
 </agent>
-<agent active="1" height="100.0" index="1" name="po bramce 1" running="0" width="140.0" x="460.0" y="10.0">
-<port id="1426698487" name="port_0" x="0.0" y="0.2"/>
-<port id="1040510846" name="port_1" x="1.0" y="0.2"/>
+<agent active="1" height="80.0" index="1" name="po bramce 2" running="0" width="100.0" x="400.0" y="185.0">
+<port id="1858204833" name="port_0" x="0.0" y="0.0"/>
+<port id="1311138113" name="port_1" x="0.0" y="0.0"/>
 </agent>
-<agent active="1" height="100.0" index="1" name="po bramce 2" running="0" width="140.0" x="460.0" y="150.0">
-<port id="791352757" name="port_0" x="0.0" y="0.2"/>
-<port id="798080779" name="port_1" x="1.0" y="0.2"/>
+<agent active="1" height="80.0" index="1" name="po bramce 3" running="0" width="100.0" x="400.0" y="290.0">
+<port id="86030513" name="port_0" x="0.0" y="0.0"/>
+<port id="814322629" name="port_1" x="0.0" y="0.0"/>
 </agent>
-<agent active="1" height="100.0" index="1" name="po bramce 3" running="0" width="140.0" x="460.0" y="290.0">
-<port id="1195745980" name="port_0" x="0.0" y="0.2"/>
-<port id="1214340318" name="port_1" x="1.0" y="0.2"/>
+<agent active="1" height="80.0" index="1" name="po bramce 1" running="0" width="100.0" x="400.0" y="80.0">
+<port id="5743379" name="port_0" x="0.0" y="0.0"/>
+<port id="1939091375" name="port_1" x="0.0" y="0.0"/>
 </agent>
-<agent active="1" height="100.0" index="1" name="i ko&amp;#324;cowe" running="0" width="140.0" x="680.0" y="110.0">
-<port id="1559479091" name="port_0" x="0.0" y="0.2"/>
-<port id="388166554" name="port_1" x="0.0" y="0.4"/>
-<port id="342968817" name="port_2" x="0.0" y="0.7"/>
-<port id="832644160" name="port_3" x="1.0" y="0.3"/>
+<agent active="1" height="80.0" index="1" name="i końcowe " running="0" width="100.0" x="715.0" y="185.0">
+<port id="476136331" name="port_0" x="0.0" y="0.0"/>
+<port id="156497451" name="port_1" x="0.0" y="0.0"/>
+<port id="1643573443" name="port_2" x="0.0" y="0.0"/>
+<port id="412322956" name="port_3" x="0.0" y="0.0"/>
 </agent>
-<agent active="1" height="100.0" index="1" name="end event" running="0" width="140.0" x="890.0" y="110.0">
-<port id="1103320840" name="port_0" x="0.0" y="0.2"/>
+<agent active="1" height="28.0" index="1" name="Agent_1" running="0" width="28.0" x="870.0" y="211.0">
+<port id="1876081688" name="port_0" x="0.0" y="0.0"/>
 </agent>
-<connection direction="target" source="1223914230" style="straight" target="1426698487"/>
-<connection direction="target" source="832644160" style="straight" target="1103320840"/>
-<connection direction="target" source="780927604" style="straight" target="791352757"/>
-<connection direction="target" source="1214340318" style="straight" target="342968817"/>
-<connection direction="target" source="1179219189" style="straight" target="1117465748"/>
-<connection direction="target" source="1069591289" style="straight" target="1195745980"/>
-<connection direction="target" source="1040510846" style="straight" target="1559479091"/>
-<connection direction="target" source="798080779" style="straight" target="388166554"/>
+<connection direction="target" source="1628029794" style="straight" target="1858204833"/>
+<connection direction="target" source="2052165701" style="straight" target="86030513"/>
+<connection direction="target" source="572694894" style="straight" target="5743379"/>
+<connection direction="target" source="1939091375" style="straight" target="476136331"/>
+<connection direction="target" source="814322629" style="straight" target="156497451"/>
+<connection direction="target" source="1311138113" style="straight" target="1643573443"/>
+<connection direction="target" source="1318526090" style="straight" target="1187126081"/>
+<connection direction="target" source="412322956" style="straight" target="1876081688"/>
 </page>
-<code/>
+<code>agent Agent_0{
+out port_0;
+}
+agent takie pierwsze{
+in port_0;
+out port_1;
+out port_2;
+out port_3;
+}
+agent po bramce 2{
+in port_0;
+out port_1;
+}
+agent po bramce 3{
+in port_0;
+out port_1;
+}
+agent po bramce 1{
+in port_0;
+out port_1;
+}
+agent i końcowe {
+in port_0;
+out port_1;
+in port_2;
+in port_3;
+}
+agent Agent_1{
+in port_0;
+}
+</code>
 </alvisproject>
-

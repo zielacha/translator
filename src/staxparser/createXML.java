@@ -28,7 +28,7 @@ public class createXML {
 	public List<Element> docAgents;
 	public List<Connection> connList;
 	
-	public boolean creatingxml(List<Item> items, List<String> gatewayID) {
+	public boolean creatingxml(List<Item> items, List<String> gatewayID, String filepath) {
 		agents = new ArrayList<Agent>();
 		docAgents = new ArrayList<Element>();
 		connList = new ArrayList<Connection>();
@@ -268,7 +268,8 @@ public class createXML {
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
-			StreamResult result = new StreamResult(new File("D:\\java\\alvisfile.alvis"));
+			String alvispath = filepath.substring(0, filepath.length() - 4).concat("alvis");  
+			StreamResult result = new StreamResult(new File(alvispath));
 
 			// Output to console for testing
 			// StreamResult result = new StreamResult(System.out);

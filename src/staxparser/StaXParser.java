@@ -41,10 +41,9 @@ public class StaXParser {
   private List<String> gatewayID;
   
   @SuppressWarnings({ "unchecked", "null" })
-  public List<Item> readConfig(String configFile) {
+  public List<Item> readConfig(String configFile) throws FileNotFoundException, XMLStreamException {
     items = new ArrayList<Item>();
     setGatewayID(new ArrayList<String>());
-    try {
       // First, create a new XMLInputFactory
       XMLInputFactory inputFactory = XMLInputFactory.newInstance();
       // Setup a new eventReader
@@ -295,11 +294,7 @@ public class StaXParser {
           length = items.size();          
         
       }
-      } catch (FileNotFoundException e) {
-        e.printStackTrace();
-      } catch (XMLStreamException e) {
-        e.printStackTrace();
-      }
+
       System.out.println("tyle mamy elementów:"+length);
       return items;
     }
