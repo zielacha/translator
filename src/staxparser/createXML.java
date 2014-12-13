@@ -33,81 +33,25 @@ public class createXML {
 		docAgents = new ArrayList<Element>();
 		connList = new ArrayList<Connection>();
 
-		try {
-			DocumentBuilderFactory docFactory = DocumentBuilderFactory
-					.newInstance();
-			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-
-			// root elements
-			// <!DOCTYPE alvisproject PUBLIC "alvisPublicId-v0.1">
-			Document doc = docBuilder.newDocument();
-			DOMImplementation domImpl = doc.getImplementation();
-			DocumentType doctype = domImpl.createDocumentType("alvisproject", "\"alvisPublicId-v0.1\"", 
-																						"\"alvisSystemId-v0.1\"");
-			doc.appendChild(doctype);
-			
-			Element alvisproject = doc.createElement("alvisproject");
-			doc.appendChild(alvisproject);
-
-			// hierarchy elements
-			Element hierarchy = doc.createElement("hierarchy");
-			alvisproject.appendChild(hierarchy);
-			// node element
-			Element node = doc.createElement("node");
-			hierarchy.appendChild(node);
-			// node attributes
-			// defaultowo System, sk¹d braæ nazwê ?
-			node.setAttribute("agent", "");
-			node.setAttribute("name", "System");
-
-			// page elements
-			Element page = doc.createElement("page");
-			alvisproject.appendChild(page);
-			page.setAttribute("name", "System");
-			System.out.println(items.size());
-			
+		
 			// forek na genty dla ka¿dego Itema
 			for (Item it : items) {
 				if (it.gettype() == "agent") {
 					Agent ag = new Agent(it);
-					Element agent = doc.createElement("agent");
-					page.appendChild(agent);
 					// forek na porty
 					for (int i = 0; i < it.getIncoming().size(); i++ ) {
 						Port p = ag.getPort(ag.getPortNum());
 						p.setName("port_" + String.valueOf(ag.getPortNum()), ag);
 						p.setDirection("in");
-//						ag.appendCode("in " + p.getName() + ";\n");
-						Element port = doc.createElement("port");
-						agent.appendChild(port);
-						port.setAttribute("id", String.valueOf(p.getid()) );
-						port.setAttribute("name", p.getName());
-						port.setAttribute("x", p.getX());
-						port.setAttribute("y", p.getY());
+						p.setX(0);
 					}
 					for (int i = 0; i < it.getOutgoing().size(); i++ ){
 						Port p = ag.getPort(ag.getPortNum());
 						p.setName("port_" + String.valueOf(ag.getPortNum()), ag);
 						p.setDirection("out");
-//						ag.appendCode("out " + p.getName() + ";\n");
-						Element port = doc.createElement("port");
-						agent.appendChild(port);
-						port.setAttribute("id", String.valueOf(p.getid()) );
-						port.setAttribute("name", p.getName());
-						port.setAttribute("x", p.getX());
-						port.setAttribute("y", p.getY());
+						p.setX(1);
 					}
-					
-					agent.setAttribute("active", ag.getactive());
-					agent.setAttribute("height", ag.getheight());
-					agent.setAttribute("index", ag.getindex());
-					agent.setAttribute("name", ag.getname());
-					agent.setAttribute("running", ag.getrunning());
-					agent.setAttribute("width", ag.getwidth());
-					agent.setAttribute("x", ag.getX());
-					agent.setAttribute("y", ag.getY());
 					agents.add(ag);
-					docAgents.add(agent);
 				}
 			}
 // gateway 
@@ -124,19 +68,10 @@ public class createXML {
 							Port p = new Port();
 							p.setName("port_" + String.valueOf(agS.getPortNum()), agS);
 							p.setDirection("out");
+							p.setX(1);
 							agS.addPort(p);
-//							agS.appendCode("out " + p.getName() + ";\n");
 						}
-						for(int i = 2; i < agS.getPorts().size(); i++){
-							Port p = agS.getPort(i);
-							Element port = doc.createElement("port");
-							Element agent = findAgentElem(agS.getname(), docAgents);
-							agent.appendChild(port); 
-							port.setAttribute("id", String.valueOf(p.getid()) );
-							port.setAttribute("name", p.getName());
-							port.setAttribute("x", p.getX());
-							port.setAttribute("y", p.getY());
-						}
+
 //create connection 
 						for (int i = 0; i < suma - 1 ; i++){
 							Connection conne = null;
@@ -145,9 +80,9 @@ public class createXML {
 							Agent agT = findAgentById(sQ2.gettargetref(), agents); 
 							boolean stop = false;
 							for(Port p : agS.getPorts()){
-								if(p.isFree()){
+								if(p.isFree() && p.getDirection() == "out"){
 									for(Port p2: agT.getPorts()){
-										if(p2.isFree()){
+										if(p2.isFree() && p2.getDirection() == "in"){
 											p.setIsFree(false);
 											p2.setIsFree(false);
 											conne = new Connection(p.getid(), p2.getid());
@@ -172,18 +107,8 @@ public class createXML {
 							Port p = new Port();
 							p.setName("port_" + String.valueOf(agT.getPortNum()), agT);
 							p.setDirection("in");
+							p.setX(0);
 							agT.addPort(p);
-//							agT.appendCode("in " + p.getName() + ";\n");
-						}
-						for(int i = 2; i < agT.getPorts().size(); i++){
-							Port p = agT.getPort(i);
-							Element port = doc.createElement("port");
-							Element agent = findAgentElem(agT.getname(), docAgents);
-							agent.appendChild(port); 
-							port.setAttribute("id", String.valueOf(p.getid()) );
-							port.setAttribute("name", p.getName());
-							port.setAttribute("x", p.getX());
-							port.setAttribute("y", p.getY());
 						}
 //create connection 						
 						for (int i = 0; i < suma - 1 ; i++){
@@ -193,9 +118,9 @@ public class createXML {
 							Agent agS = findAgentById(sQ2.getsourceref(), agents); 
 							boolean stop = false;
 							for(Port p : agT.getPorts()){
-								if(p.isFree()){
+								if(p.isFree() && p.getDirection() == "in"){
 									for(Port p2: agS.getPorts()){
-										if(p2.isFree()){
+										if(p2.isFree() && p2.getDirection() == "out"){
 											p.setIsFree(false);
 											p2.setIsFree(false);
 											conne = new Connection(p2.getid(), p.getid());
@@ -224,9 +149,9 @@ public class createXML {
 						Agent agS = findAgentById(sQ.getsourceref(), agents);
 						Agent agT = findAgentById(sQ.gettargetref(), agents);
 						for(Port p : agS.getPorts()){
-							if(p.isFree()){
+							if(p.isFree() && p.getDirection() == "out"){
 								for(Port p2: agT.getPorts()){
-									if(p2.isFree()){
+									if(p2.isFree() && p2.getDirection() == "in"){
 										conne = new Connection(p.getid(), p2.getid());
 										p.setIsFree(false);
 										p2.setIsFree(false);
@@ -239,52 +164,119 @@ public class createXML {
 					}
 				}
 			}
-			
-			for(Connection c : connList){
-				Element connect = doc.createElement("connection");
-				page.appendChild(connect);
-				connect.setAttribute("direction", c.getdirection());
-				connect.setAttribute("source", c.getsource());
-				connect.setAttribute("style", c.getstyle());
-				connect.setAttribute("target", c.gettarget());	
-			}
+
+		create(filepath);
+		return true;
+	}
 	
-			// code elements
-			Element code = doc.createElement("code");
-			for(Agent a : agents){
+	public boolean create(String filepath){
+		
+	try {
+
+		DocumentBuilderFactory docFactory = DocumentBuilderFactory
+				.newInstance();
+		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+
+		// root elements
+		// <!DOCTYPE alvisproject PUBLIC "alvisPublicId-v0.1">
+		Document doc = docBuilder.newDocument();
+		DOMImplementation domImpl = doc.getImplementation();
+		DocumentType doctype = domImpl.createDocumentType("alvisproject", "\"alvisPublicId-v0.1\"", 
+																					"\"alvisSystemId-v0.1\"");
+		doc.appendChild(doctype);
+		
+		Element alvisproject = doc.createElement("alvisproject");
+		doc.appendChild(alvisproject);
+
+		// hierarchy elements
+		Element hierarchy = doc.createElement("hierarchy");
+		alvisproject.appendChild(hierarchy);
+		// node element
+		Element node = doc.createElement("node");
+		hierarchy.appendChild(node);
+		// node attributes
+		// defaultowo System, sk¹d braæ nazwê ?
+		node.setAttribute("agent", "");
+		node.setAttribute("name", "System");
+
+		// page elements
+		Element page = doc.createElement("page");
+		alvisproject.appendChild(page);
+		page.setAttribute("name", "System");
+	//	System.out.println(items.size());
+		for(Agent a : agents){
+			if(a.getType() == "agent"){
+				Element agent = doc.createElement("agent");
+				page.appendChild(agent);	
+				agent.setAttribute("active", a.getactive());
+				agent.setAttribute("height", a.getheight());
+				agent.setAttribute("index", a.getindex());
+				agent.setAttribute("name", a.getname());
+				agent.setAttribute("running", a.getrunning());
+				agent.setAttribute("width", a.getwidth());
+				agent.setAttribute("x", a.getX());
+				agent.setAttribute("y", a.getY());
+				float i = 1;
+				float j = 1;
 				for(Port p : a.getPorts()){
-					a.appendCode(p.getDirection() + " " + p.getName() + ";\n");
+					Element port = doc.createElement("port");
+					agent.appendChild(port);
+					if(p.getDirection() == "in"){
+						p.setY(i*1/(a.sumInPorts() + 1));
+						i++;
+					}
+					if(p.getDirection() == "out"){
+						p.setY(j*1/(a.sumOutPorts() + 1));
+						j++;
+					}
+					port.setAttribute("id", String.valueOf(p.getid()) );
+					port.setAttribute("name", p.getName());
+					port.setAttribute("x", p.getX());
+					port.setAttribute("y", p.getY());
 				}
-				a.appendCode("}\n");
-				code.appendChild(doc.createTextNode(a.getCode()));
 			}
-			alvisproject.appendChild(code);
-			
-			
+		}
+		for(Connection c : connList){
+			Element connect = doc.createElement("connection");
+			page.appendChild(connect);
+			connect.setAttribute("direction", c.getdirection());
+			connect.setAttribute("source", c.getsource());
+			connect.setAttribute("style", c.getstyle());
+			connect.setAttribute("target", c.gettarget());	
+		}
+		
+		// code elements
+		Element code = doc.createElement("code");
+		for(Agent a : agents){
+			for(Port p : a.getPorts()){
+				a.appendCode(p.getDirection() + " " + p.getName() + ";\n");
+			}
+			a.appendCode("}\n");
+			code.appendChild(doc.createTextNode(a.getCode()));
+		}
+		alvisproject.appendChild(code);
+		// write the content into xml file
+		TransformerFactory transformerFactory = TransformerFactory.newInstance();
+		Transformer transformer = transformerFactory.newTransformer();
+		DOMSource source = new DOMSource(doc);
+		String alvispath = filepath.substring(0, filepath.length() - 4).concat("alvis");  
+		StreamResult result = new StreamResult(new File(alvispath));
 
-			// agent elements
-
-			// write the content into xml file
-			TransformerFactory transformerFactory = TransformerFactory.newInstance();
-			Transformer transformer = transformerFactory.newTransformer();
-			DOMSource source = new DOMSource(doc);
-			String alvispath = filepath.substring(0, filepath.length() - 4).concat("alvis");  
-			StreamResult result = new StreamResult(new File(alvispath));
-
-			// Output to console for testing
-			// StreamResult result = new StreamResult(System.out);
-			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-			transformer.transform(source, result);
-			System.out.println("File saved!");
+		// Output to console for testing
+		// StreamResult result = new StreamResult(System.out);
+		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+		transformer.transform(source, result);
+		System.out.println("File saved!");
 
 		} catch (ParserConfigurationException pce) {
 			pce.printStackTrace();
 		} catch (TransformerException tfe) {
 			tfe.printStackTrace();
 		}
-
+		
 		return true;
 	}
+	
 	
 	private Element findAgentElem(String name, List<Element> agents){
 		for(Element a: agents){

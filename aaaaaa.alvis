@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE alvisproject PUBLIC "alvisPublicId-v0.1" "alvisSystemId-v0.1">
+<alvisproject>
+<hierarchy>
+<node agent="" name="System"/>
+</hierarchy>
+<page name="System">
+<agent active="1" height="30.0" index="1" name="Agent_0" running="0" width="61.0" x="164.5" y="225.0">
+<port id="1366701625" name="port_0" x="1.0" y="0.49999999999999994"/>
+</agent>
+<agent active="1" height="28.0" index="1" name="Agent_1" running="0" width="61.0" x="493.5" y="226.0">
+<port id="1489679431" name="port_0" x="0.0" y="0.5"/>
+</agent>
+<agent active="1" height="80.0" index="1" name="Wykonaj zadanie ! " running="0" width="128.0" x="296.0" y="200.0">
+<port id="322866653" name="port_0" x="0.0" y="0.5"/>
+<port id="520534179" name="port_1" x="1.0" y="0.5"/>
+</agent>
+<connection direction="target" source="1366701625" style="straight" target="322866653"/>
+<connection direction="target" source="520534179" style="straight" target="1489679431"/>
+</page>
+<code>agent Agent_0{
+out port_0;
+}
+agent Agent_1{
+in port_0;
+}
+agent Wykonaj zadanie ! {
+in port_0;
+out port_1;
+}
+</code>
+</alvisproject>
+

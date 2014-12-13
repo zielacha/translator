@@ -5,43 +5,43 @@
 </hierarchy>
 <page name="System">
 <agent active="1" height="30.0" index="1" name="Agent_0" running="0" width="30.0" x="75.0" y="210.0">
-<port id="1318526090" name="port_0" x="0.0" y="0.0"/>
+<port id="484733584" name="port_0" x="1.0" y="0.5"/>
 </agent>
 <agent active="1" height="80.0" index="1" name="takie pierwsze" running="0" width="100.0" x="150.0" y="185.0">
-<port id="1628029794" name="port_0" x="0.0" y="0.0"/>
-<port id="2052165701" name="port_1" x="0.0" y="0.0"/>
-<port id="572694894" name="port_2" x="0.0" y="0.0"/>
-<port id="1187126081" name="port_3" x="0.0" y="0.0"/>
+<port id="1570229263" name="port_0" x="0.0" y="0.5"/>
+<port id="63414778" name="port_1" x="1.0" y="0.25"/>
+<port id="1527263886" name="port_2" x="1.0" y="0.5"/>
+<port id="46071277" name="port_3" x="1.0" y="0.75"/>
 </agent>
 <agent active="1" height="80.0" index="1" name="po bramce 2" running="0" width="100.0" x="400.0" y="185.0">
-<port id="1858204833" name="port_0" x="0.0" y="0.0"/>
-<port id="1311138113" name="port_1" x="0.0" y="0.0"/>
+<port id="2110610418" name="port_0" x="0.0" y="0.5"/>
+<port id="1574327657" name="port_1" x="1.0" y="0.5"/>
 </agent>
 <agent active="1" height="80.0" index="1" name="po bramce 3" running="0" width="100.0" x="400.0" y="290.0">
-<port id="86030513" name="port_0" x="0.0" y="0.0"/>
-<port id="814322629" name="port_1" x="0.0" y="0.0"/>
+<port id="1245158994" name="port_0" x="0.0" y="0.5"/>
+<port id="1692229551" name="port_1" x="1.0" y="0.5"/>
 </agent>
 <agent active="1" height="80.0" index="1" name="po bramce 1" running="0" width="100.0" x="400.0" y="80.0">
-<port id="5743379" name="port_0" x="0.0" y="0.0"/>
-<port id="1939091375" name="port_1" x="0.0" y="0.0"/>
+<port id="2058278860" name="port_0" x="0.0" y="0.5"/>
+<port id="1936345979" name="port_1" x="1.0" y="0.5"/>
 </agent>
 <agent active="1" height="80.0" index="1" name="i końcowe " running="0" width="100.0" x="715.0" y="185.0">
-<port id="476136331" name="port_0" x="0.0" y="0.0"/>
-<port id="156497451" name="port_1" x="0.0" y="0.0"/>
-<port id="1643573443" name="port_2" x="0.0" y="0.0"/>
-<port id="412322956" name="port_3" x="0.0" y="0.0"/>
+<port id="1848078662" name="port_0" x="0.0" y="0.25"/>
+<port id="1689424199" name="port_1" x="1.0" y="0.5"/>
+<port id="1295489243" name="port_2" x="0.0" y="0.5"/>
+<port id="365549985" name="port_3" x="0.0" y="0.75"/>
 </agent>
 <agent active="1" height="28.0" index="1" name="Agent_1" running="0" width="28.0" x="870.0" y="211.0">
-<port id="1876081688" name="port_0" x="0.0" y="0.0"/>
+<port id="1882688119" name="port_0" x="0.0" y="0.5"/>
 </agent>
-<connection direction="target" source="1628029794" style="straight" target="1858204833"/>
-<connection direction="target" source="2052165701" style="straight" target="86030513"/>
-<connection direction="target" source="572694894" style="straight" target="5743379"/>
-<connection direction="target" source="1939091375" style="straight" target="476136331"/>
-<connection direction="target" source="814322629" style="straight" target="156497451"/>
-<connection direction="target" source="1311138113" style="straight" target="1643573443"/>
-<connection direction="target" source="1318526090" style="straight" target="1187126081"/>
-<connection direction="target" source="412322956" style="straight" target="1876081688"/>
+<connection direction="target" source="63414778" style="straight" target="2110610418"/>
+<connection direction="target" source="1527263886" style="straight" target="1245158994"/>
+<connection direction="target" source="46071277" style="straight" target="2058278860"/>
+<connection direction="target" source="1936345979" style="straight" target="1848078662"/>
+<connection direction="target" source="1692229551" style="straight" target="1295489243"/>
+<connection direction="target" source="1574327657" style="straight" target="365549985"/>
+<connection direction="target" source="484733584" style="straight" target="1570229263"/>
+<connection direction="target" source="1689424199" style="straight" target="1882688119"/>
 </page>
 <code>agent Agent_0{
 out port_0;

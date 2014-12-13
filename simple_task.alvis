@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE alvisproject PUBLIC "alvisPublicId-v0.1" "alvisSystemId-v0.1">
 <alvisproject>
 <hierarchy>
 <node agent="" name="System"/>
 </hierarchy>
 <page name="System">
-<agent active="1" height="100.0" index="1" name="start" running="0" width="140.0" x="80.0" y="90.0">
-<port id="149538503" name="o1" x="1.0" y="0.6000000000000001"/>
+<agent active="1" height="30.0" index="1" name="Agent_0" running="0" width="30.0" x="180.0" y="225.0">
+<port id="2129551375" name="port_0" x="1.0" y="0.5"/>
 </agent>
-<agent active="1" height="100.0" index="1" name="simple_task" running="0" width="140.0" x="270.0" y="90.0">
-<port id="1943364908" name="&lt;p style=&quot;margin-top: 0&quot;&gt;&#13;&lt;br&gt;      i1&#13;&lt;br&gt;    &lt;/p&gt;" x="0.0" y="0.6"/>
-<port id="1518361263" name="o2" x="1.0" y="0.6"/>
+<agent active="1" height="28.0" index="1" name="Agent_1" running="0" width="28.0" x="510.0" y="226.0">
+<port id="1889584623" name="port_0" x="0.0" y="0.5"/>
 </agent>
-<agent active="1" height="100.0" index="1" name="end" running="0" width="140.0" x="470.0" y="90.0">
-<port id="945583071" name="i2" x="0.0" y="0.6000000000000001"/>
+<agent active="1" height="80.0" index="1" name="Wykonaj zadanie ! " running="0" width="100.0" x="310.0" y="200.0">
+<port id="911191980" name="port_0" x="0.0" y="0.5"/>
+<port id="1326865168" name="port_1" x="1.0" y="0.5"/>
 </agent>
-<connection direction="target" source="1518361263" style="straight" target="945583071"/>
-<connection direction="target" source="149538503" style="straight" target="1943364908"/>
+<connection direction="target" source="2129551375" style="straight" target="911191980"/>
+<connection direction="target" source="1326865168" style="straight" target="1889584623"/>
 </page>
-<code>--start 
-out o1;
-
---simple_task
-in i1;
-out o2;
-
---end
-in i2;</code>
+<code>agent Agent_0{
+out port_0;
+}
+agent Agent_1{
+in port_0;
+}
+agent Wykonaj zadanie ! {
+in port_0;
+out port_1;
+}
+</code>
 </alvisproject>
-

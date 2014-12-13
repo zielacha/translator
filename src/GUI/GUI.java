@@ -49,7 +49,7 @@ public class GUI {
 		
 		textField = new JTextField();
 		textField.setBounds(27, 27, 187, 20);
-		textField.setText("inclusive_gateway.bpmn");		
+		textField.setText("simple_task.bpmn");		
 		frmBpmnAlvis.getContentPane().add(textField);
 		textField.setColumns(10);
 		
