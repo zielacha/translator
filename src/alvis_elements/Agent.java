@@ -22,6 +22,8 @@ public class Agent {
 	private List<Port> ports; 
 	private static int agentNum = 0;
 	private int portNum = 0;
+	private String AlvisCode ="";
+	private String type;
 
 	public int count_attr = 8;
 
@@ -46,6 +48,7 @@ public class Agent {
 		}	
 		this.alvis_id = changeID(it.getbpmn_id());
 		this.bpmn_id = it.getbpmn_id();
+		AlvisCode += "agent " + name + "{\n";
 	}
 	// change bpmn ID to Alvis ID
 		  public int changeID(String bpmn_id){ 
@@ -161,5 +164,13 @@ public class Agent {
 	
 	public void addPort(Port p){
 		ports.add(p);
+	}
+	
+	public void appendCode(String str){
+		AlvisCode += str;
+	}
+	
+	public String getCode(){
+		return AlvisCode;
 	}
 }

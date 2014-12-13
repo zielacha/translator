@@ -4,7 +4,7 @@ package bpmn_elements;
 
 public class gateway extends Item{
 	private String gatewayDirection; // moze przyjac tylko dwa argumenty 
-//	private String type; 
+	private String gateType; 
     public Item prew; //prev ;pnoo
 	public Item next;
 	
@@ -21,13 +21,13 @@ public class gateway extends Item{
 		this.gatewayDirection = gatewayDirection;
 	}
 // type 	
-//	public String gettype(){
-//		return type;
-//	}
-//	
-//	public void settype(String type){
-//		this.type = type;
-//	}
+	public String getGateType(){
+		return gateType;
+	}
+	
+	public void setGateType(String type){
+		this.gateType = type;
+	}
 	
 //	@Override
 //	public String toString() {

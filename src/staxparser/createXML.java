@@ -28,7 +28,6 @@ public class createXML {
 	public List<Element> docAgents;
 	public List<Connection> connList;
 	
-
 	public boolean creatingxml(List<Item> items, List<String> gatewayID) {
 		agents = new ArrayList<Agent>();
 		docAgents = new ArrayList<Element>();
@@ -77,6 +76,8 @@ public class createXML {
 					for (int i = 0; i < it.getIncoming().size(); i++ ) {
 						Port p = ag.getPort(ag.getPortNum());
 						p.setName("port_" + String.valueOf(ag.getPortNum()), ag);
+						p.setDirection("in");
+//						ag.appendCode("in " + p.getName() + ";\n");
 						Element port = doc.createElement("port");
 						agent.appendChild(port);
 						port.setAttribute("id", String.valueOf(p.getid()) );
@@ -87,6 +88,8 @@ public class createXML {
 					for (int i = 0; i < it.getOutgoing().size(); i++ ){
 						Port p = ag.getPort(ag.getPortNum());
 						p.setName("port_" + String.valueOf(ag.getPortNum()), ag);
+						p.setDirection("out");
+//						ag.appendCode("out " + p.getName() + ";\n");
 						Element port = doc.createElement("port");
 						agent.appendChild(port);
 						port.setAttribute("id", String.valueOf(p.getid()) );
@@ -120,7 +123,9 @@ public class createXML {
 						for(int i = 0; i < suma - 2; i++){
 							Port p = new Port();
 							p.setName("port_" + String.valueOf(agS.getPortNum()), agS);
+							p.setDirection("out");
 							agS.addPort(p);
+//							agS.appendCode("out " + p.getName() + ";\n");
 						}
 						for(int i = 2; i < agS.getPorts().size(); i++){
 							Port p = agS.getPort(i);
@@ -166,7 +171,9 @@ public class createXML {
 						for(int i = 0; i < suma - 2; i++){
 							Port p = new Port();
 							p.setName("port_" + String.valueOf(agT.getPortNum()), agT);
+							p.setDirection("in");
 							agT.addPort(p);
+//							agT.appendCode("in " + p.getName() + ";\n");
 						}
 						for(int i = 2; i < agT.getPorts().size(); i++){
 							Port p = agT.getPort(i);
@@ -244,7 +251,16 @@ public class createXML {
 	
 			// code elements
 			Element code = doc.createElement("code");
+			for(Agent a : agents){
+				for(Port p : a.getPorts()){
+					a.appendCode(p.getDirection() + " " + p.getName() + ";\n");
+				}
+				a.appendCode("}\n");
+				code.appendChild(doc.createTextNode(a.getCode()));
+			}
 			alvisproject.appendChild(code);
+			
+			
 
 			// agent elements
 

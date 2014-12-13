@@ -7,13 +7,13 @@ import java.util.Random;
 public class Port {
 	private int id;
 	private String name;
+	private String direction="";
 	private float x;
 	private float y;
 	private boolean isFree;
 	
 	public Port(){
 		this.id = changeID();
-//		this.name = 
 		this.x = 0;
 		this.y = 0;
 		isFree = true;
@@ -69,6 +69,13 @@ public class Port {
 		isFree = b;
 	}
 	
+	public void setDirection(String d){
+		direction = d;
+	}
+	
+	public String getDirection(){
+		return direction;
+	}
 	
 	// <port id="1981927620" name="port_0" x="0.0" y="0.2"/>
 	

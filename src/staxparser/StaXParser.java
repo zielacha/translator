@@ -161,8 +161,9 @@ public class StaXParser {
             		  startElement.getName().getLocalPart() == (INCLUSIVE_G) ||
             		  startElement.getName().getLocalPart() == (PARALLEL_G) ){
             	gate = new gateway();
-            	Iterator<Attribute> attributes = startElement.getAttributes();
+              	Iterator<Attribute> attributes = startElement.getAttributes();
             	gate.settype("gateway");
+            	gate.setGateType(startElement.getName().getLocalPart());
                  while (attributes.hasNext()) {
                 	 Attribute attribute = attributes.next();
                 	 if (attribute.getName().toString().equals(ID)) {
@@ -282,7 +283,8 @@ public class StaXParser {
                 System.out.println(seqflow);
                 System.out.println("Koniec elementu");
             }
-            else if(endElement.getName().getLocalPart() == (INCLUSIVE_G) ||
+            else if(event.asEndElement().getName().getLocalPart() == (EXCLUSIVE_G) ||
+            		endElement.getName().getLocalPart() == (INCLUSIVE_G) ||
             		endElement.getName().getLocalPart() == (PARALLEL_G)){
             	items.add(gate);
                 System.out.println(gate);
