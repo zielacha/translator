@@ -1,12 +1,7 @@
 package bpmn_elements;
 
-import java.io.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
-import bpmn_elements.*;
-import static java.lang.Math.*;
 
 public class Item {
 	  private String bpmn_id; 
@@ -19,11 +14,7 @@ public class Item {
 	  private String type;
 	  private List<String> incoming = new ArrayList<String>();
 	  private List<String> outgoing = new ArrayList<String>();
-	  
-	  private String gatewayDirection;
-	  //private String current;
-	  //private String interactive;
-	  
+	   
 // ID BPMN	  
 	  public String getbpmn_id() {
 	    return bpmn_id;

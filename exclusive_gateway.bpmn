@@ -15,7 +15,7 @@
          </extensionElements>
          <incoming>sid-5B44720D-41ED-444D-BC14-A4ADB9812EE6</incoming>
       </endEvent>
-      <task completionQuantity="1" id="sid-831208D6-D802-4440-ACE2-137DE59E185E" isForCompensation="false" name="zad pierwsze dobre " startQuantity="1">
+      <task completionQuantity="1" id="sid-831208D6-D802-4440-ACE2-137DE59E185E" isForCompensation="false" name="zad pierwsze dobre" startQuantity="1">
          <extensionElements>
             <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc"/>
             <signavio:signavioMetaData metaKey="risklevel" metaValue=""/>
@@ -32,7 +32,7 @@
          <outgoing>sid-5BB9DEEB-8B1A-4B60-8442-F3FCA01F2AC9</outgoing>
          <outgoing>sid-B4494744-97A7-4769-86E6-7817719F5E32</outgoing>
       </exclusiveGateway>
-      <task completionQuantity="1" id="sid-E3EFFAF2-C4AF-4B18-BC37-D132117AA445" isForCompensation="false" name="zadanie po gateway 2 " startQuantity="1">
+      <task completionQuantity="1" id="sid-E3EFFAF2-C4AF-4B18-BC37-D132117AA445" isForCompensation="false" name="zadanie po gateway 2" startQuantity="1">
          <extensionElements>
             <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc"/>
             <signavio:signavioMetaData metaKey="risklevel" metaValue=""/>
@@ -41,7 +41,7 @@
          <incoming>sid-5BB9DEEB-8B1A-4B60-8442-F3FCA01F2AC9</incoming>
          <outgoing>sid-AE110B5E-2A0A-4CF4-9BE3-52619F69E186</outgoing>
       </task>
-      <task completionQuantity="1" id="sid-4D4C0B12-54C4-49AF-8A09-E492AAE94AA8" isForCompensation="false" name="zadanie po gateway " startQuantity="1">
+      <task completionQuantity="1" id="sid-4D4C0B12-54C4-49AF-8A09-E492AAE94AA8" isForCompensation="false" name="zadanie po gateway" startQuantity="1">
          <extensionElements>
             <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc"/>
             <signavio:signavioMetaData metaKey="risklevel" metaValue=""/>

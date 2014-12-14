@@ -5,17 +5,17 @@
 </hierarchy>
 <page name="System">
 <agent active="1" height="30.0" index="1" name="Agent_0" running="0" width="30.0" x="180.0" y="225.0">
-<port id="2129551375" name="port_0" x="1.0" y="0.5"/>
+<port id="1909065332" name="port_0" x="1.0" y="0.5"/>
 </agent>
 <agent active="1" height="28.0" index="1" name="Agent_1" running="0" width="28.0" x="510.0" y="226.0">
-<port id="1889584623" name="port_0" x="0.0" y="0.5"/>
+<port id="904672202" name="port_0" x="0.0" y="0.5"/>
 </agent>
-<agent active="1" height="80.0" index="1" name="Wykonaj zadanie ! " running="0" width="100.0" x="310.0" y="200.0">
-<port id="911191980" name="port_0" x="0.0" y="0.5"/>
-<port id="1326865168" name="port_1" x="1.0" y="0.5"/>
+<agent active="1" height="80.0" index="1" name="Wykonaj_zadanie_!_" running="0" width="100.0" x="310.0" y="200.0">
+<port id="946216271" name="port_0" x="0.0" y="0.5"/>
+<port id="30177306" name="port_1" x="1.0" y="0.5"/>
 </agent>
-<connection direction="target" source="2129551375" style="straight" target="911191980"/>
-<connection direction="target" source="1326865168" style="straight" target="1889584623"/>
+<connection direction="target" source="1909065332" style="straight" target="946216271"/>
+<connection direction="target" source="30177306" style="straight" target="904672202"/>
 </page>
 <code>agent Agent_0{
 out port_0;
@@ -23,7 +23,7 @@ out port_0;
 agent Agent_1{
 in port_0;
 }
-agent Wykonaj zadanie ! {
+agent Wykonaj_zadanie_!_{
 in port_0;
 out port_1;
 }

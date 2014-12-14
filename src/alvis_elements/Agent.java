@@ -1,11 +1,12 @@
 package alvis_elements;
 
 import static java.lang.Math.abs;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import bpmn_elements.Item;
-
-import java.util.*;
-
-import alvis_elements.Port;
 
 public class Agent {
 //	<agent active="1" height="100.0" index="1" name="Agent_0" running="0" width="140.0" x="20.0" y="20.0">
@@ -30,16 +31,16 @@ public class Agent {
 	public Agent(Item it) {
 		this.active = "1";
 		this.height = it.getheight();
+		this.width = it.getwidth();
 		this.index = "1";
-		//TODO: zmiana spacji na _
 		if(it.getname().equals("")){
 			this.name = "Agent_" + agentNum;
 			agentNum++;
 		}else{
-			this.name = it.getname();
+			this.name = it.getname().replaceAll(" ", "_");
 		}
 		this.running = "0";
-		this.width = it.getwidth();
+
 		this.x = it.getX();
 		this.y = it.getY();
 		ports = new ArrayList<Port>();
@@ -48,10 +49,9 @@ public class Agent {
 		}	
 		this.alvis_id = changeID(it.getbpmn_id());
 		this.bpmn_id = it.getbpmn_id();
-		this.type = it.gettype();
 		AlvisCode += "agent " + name + "{\n";
 	}
-	// change bpmn ID to Alvis ID
+// change bpmn ID to Alvis ID
 		  public int changeID(String bpmn_id){ 
 			  Random rand = new Random();
 			  int x = 0;
@@ -177,6 +177,10 @@ public class Agent {
 	
 	public String getType(){
 		return type;
+	}
+	
+	public void setType(String t){
+		type = t;
 	}
 	
 	public int sumInPorts(){

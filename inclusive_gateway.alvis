@@ -4,73 +4,77 @@
 <node agent="" name="System"/>
 </hierarchy>
 <page name="System">
-<agent active="1" height="30.0" index="1" name="Agent_0" running="0" width="30.0" x="75.0" y="210.0">
-<port id="484733584" name="port_0" x="1.0" y="0.5"/>
+<agent active="1" height="30.0" index="1" name="Agent_4" running="0" width="30.0" x="75.0" y="210.0">
+<port id="1948597240" name="port_0" x="1.0" y="0.5"/>
 </agent>
-<agent active="1" height="80.0" index="1" name="takie pierwsze" running="0" width="100.0" x="150.0" y="185.0">
-<port id="1570229263" name="port_0" x="0.0" y="0.5"/>
-<port id="63414778" name="port_1" x="1.0" y="0.25"/>
-<port id="1527263886" name="port_2" x="1.0" y="0.5"/>
-<port id="46071277" name="port_3" x="1.0" y="0.75"/>
+<agent active="1" height="80.0" index="1" name="takie_pierwsze" running="0" width="100.0" x="150.0" y="185.0">
+<port id="2051863146" name="port_0" x="0.0" y="0.5"/>
+<port id="1759259013" name="port_1" x="1.0" y="0.25"/>
+<port id="290643784" name="port_2" x="1.0" y="0.5"/>
+<port id="1978246349" name="port_3" x="1.0" y="0.75"/>
 </agent>
-<agent active="1" height="80.0" index="1" name="po bramce 2" running="0" width="100.0" x="400.0" y="185.0">
-<port id="2110610418" name="port_0" x="0.0" y="0.5"/>
-<port id="1574327657" name="port_1" x="1.0" y="0.5"/>
+<agent active="1" height="80.0" index="1" name="po_bramce_2" running="0" width="100.0" x="400.0" y="185.0">
+<port id="35638185" name="port_0" x="0.0" y="0.5"/>
+<port id="1734842026" name="port_1" x="1.0" y="0.5"/>
 </agent>
-<agent active="1" height="80.0" index="1" name="po bramce 3" running="0" width="100.0" x="400.0" y="290.0">
-<port id="1245158994" name="port_0" x="0.0" y="0.5"/>
-<port id="1692229551" name="port_1" x="1.0" y="0.5"/>
+<agent active="1" height="80.0" index="1" name="po_bramce_3" running="0" width="100.0" x="400.0" y="290.0">
+<port id="1686709" name="port_0" x="0.0" y="0.5"/>
+<port id="615609062" name="port_1" x="1.0" y="0.5"/>
 </agent>
-<agent active="1" height="80.0" index="1" name="po bramce 1" running="0" width="100.0" x="400.0" y="80.0">
-<port id="2058278860" name="port_0" x="0.0" y="0.5"/>
-<port id="1936345979" name="port_1" x="1.0" y="0.5"/>
+<agent active="1" height="80.0" index="1" name="po_bramce_1" running="0" width="100.0" x="400.0" y="80.0">
+<port id="363942766" name="port_0" x="0.0" y="0.5"/>
+<port id="1812751157" name="port_1" x="1.0" y="0.5"/>
 </agent>
-<agent active="1" height="80.0" index="1" name="i końcowe " running="0" width="100.0" x="715.0" y="185.0">
-<port id="1848078662" name="port_0" x="0.0" y="0.25"/>
-<port id="1689424199" name="port_1" x="1.0" y="0.5"/>
-<port id="1295489243" name="port_2" x="0.0" y="0.5"/>
-<port id="365549985" name="port_3" x="0.0" y="0.75"/>
+<agent active="1" height="80.0" index="1" name="i_końcowe_" running="0" width="100.0" x="715.0" y="185.0">
+<port id="892632325" name="port_0" x="0.0" y="0.25"/>
+<port id="1257680765" name="port_1" x="1.0" y="0.5"/>
+<port id="1891269904" name="port_2" x="0.0" y="0.5"/>
+<port id="1135489332" name="port_3" x="0.0" y="0.75"/>
 </agent>
-<agent active="1" height="28.0" index="1" name="Agent_1" running="0" width="28.0" x="870.0" y="211.0">
-<port id="1882688119" name="port_0" x="0.0" y="0.5"/>
+<agent active="1" height="28.0" index="1" name="Agent_5" running="0" width="28.0" x="870.0" y="211.0">
+<port id="1386985576" name="port_0" x="0.0" y="0.5"/>
 </agent>
-<connection direction="target" source="63414778" style="straight" target="2110610418"/>
-<connection direction="target" source="1527263886" style="straight" target="1245158994"/>
-<connection direction="target" source="46071277" style="straight" target="2058278860"/>
-<connection direction="target" source="1936345979" style="straight" target="1848078662"/>
-<connection direction="target" source="1692229551" style="straight" target="1295489243"/>
-<connection direction="target" source="1574327657" style="straight" target="365549985"/>
-<connection direction="target" source="484733584" style="straight" target="1570229263"/>
-<connection direction="target" source="1689424199" style="straight" target="1882688119"/>
+<connection direction="target" source="1759259013" style="straight" target="35638185"/>
+<connection direction="target" source="290643784" style="straight" target="1686709"/>
+<connection direction="target" source="1978246349" style="straight" target="363942766"/>
+<connection direction="target" source="1734842026" style="straight" target="892632325"/>
+<connection direction="target" source="1812751157" style="straight" target="1891269904"/>
+<connection direction="target" source="615609062" style="straight" target="1135489332"/>
+<connection direction="target" source="1948597240" style="straight" target="2051863146"/>
+<connection direction="target" source="1257680765" style="straight" target="1386985576"/>
 </page>
-<code>agent Agent_0{
+<code>agent Agent_4{
 out port_0;
 }
-agent takie pierwsze{
+agent takie_pierwsze{
 in port_0;
 out port_1;
 out port_2;
 out port_3;
 }
-agent po bramce 2{
+agent po_bramce_2{
 in port_0;
 out port_1;
 }
-agent po bramce 3{
+agent po_bramce_3{
 in port_0;
 out port_1;
 }
-agent po bramce 1{
+agent po_bramce_1{
 in port_0;
 out port_1;
 }
-agent i końcowe {
-in port_0;
-out port_1;
-in port_2;
-in port_3;
+agent i_końcowe_{
+loop {
+select {
+alt (ready [in(port_0)]){ in port_0;}
+alt (ready [in(port_2)]){ in port_2;}
+alt (ready [in(port_3)]){ in port_3;}
 }
-agent Agent_1{
+}
+out port_1;
+}
+agent Agent_5{
 in port_0;
 }
 </code>

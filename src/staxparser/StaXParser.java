@@ -15,7 +15,10 @@ import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
-import bpmn_elements.*;
+import bpmn_elements.Item;
+import bpmn_elements.gateway;
+import bpmn_elements.sequenceFlow;
+import bpmn_elements.task;
 
 
 public class StaXParser {
@@ -36,13 +39,17 @@ public class StaXParser {
   static final String INCLUSIVE_G = "inclusiveGateway";
   static final String PARALLEL_G = "parallelGateway";
   static final String GATEWAYDIRECTION = "gatewayDirection";
+  static final String MESSAGEFLOW = "messageFlow";
+  static final String POOL = "participant";
   public int length;
   public List<Item> items;
+  public List<Item> pool;
   private List<String> gatewayID;
   
-  @SuppressWarnings({ "unchecked", "null" })
-  public List<Item> readConfig(String configFile) throws FileNotFoundException, XMLStreamException {
+@SuppressWarnings("unchecked")
+public List<Item> readConfig(String configFile) throws FileNotFoundException, XMLStreamException {
     items = new ArrayList<Item>();
+    pool = new ArrayList<Item>();
     setGatewayID(new ArrayList<String>());
       // First, create a new XMLInputFactory
       XMLInputFactory inputFactory = XMLInputFactory.newInstance();
@@ -121,10 +128,14 @@ public class StaXParser {
             			
            		}while ( cont );
 // TASK                
-            }else if (startElement.getName().getLocalPart() == (TASK)){
+            }else if (startElement.getName().getLocalPart() == (TASK)
+            		|| startElement.getName().getLocalPart() == (POOL) ){
             	zadanie = new task();
             	Iterator<Attribute> attributes = startElement.getAttributes();
                 zadanie.settype("agent");
+                if(startElement.getName().getLocalPart() == (POOL)){
+                	pool.add(zadanie);
+                }
                  while (attributes.hasNext()) {
                 	 Attribute attribute = attributes.next();
                 	 if (attribute.getName().toString().equals(ID)) {
@@ -150,7 +161,8 @@ public class StaXParser {
              				}
              			}
              			if(event.isEndElement()){
-             				if(event.asEndElement().getName().getLocalPart() == (TASK))
+             				if(event.asEndElement().getName().getLocalPart() == (TASK)
+             						|| event.asEndElement().getName().getLocalPart() == (POOL) )
              					cont = false;
              			}
              			
@@ -200,7 +212,8 @@ public class StaXParser {
             		} while ( cont );
              	 
 // SEQUENCE FLOW    		
-            }else if (startElement.getName().getLocalPart() == (SEQENCEFLOW)) {
+            }else if (startElement.getName().getLocalPart() == (SEQENCEFLOW)
+            				|| startElement.getName().getLocalPart() == (MESSAGEFLOW)) {
             	seqflow = new sequenceFlow();
             	seqflow.settype("connection");
             	Iterator<Attribute> attributes = startElement.getAttributes();
@@ -210,13 +223,22 @@ public class StaXParser {
                 	  seqflow.setbpmn_id(attribute.getValue());
                   }
                   if (attribute.getName().toString().equals(SOURCEREF)){
+                	  for(Item i : pool){
+                		  if(attribute.getValue().equals(i.getbpmn_id())){
+                			  i.addOut(attribute.getValue());
+                		  }
+                	  }
                 	  seqflow.setSourceref(attribute.getValue());
                   }
                   if (attribute.getName().toString().equals(TARGETREF)) {
+                	  for(Item i : pool){
+                		  if(attribute.getValue().equals(i.getbpmn_id())){
+                			  i.addIn(attribute.getValue());
+                		  }
+                	  }
                 	  seqflow.setTargetref(attribute.getValue());
                   }
-                }
-
+                }          
 // BPMN Diagram Shape
             }           
             else if (startElement.getName().getLocalPart() == (BPMNDIAGRAMSHAPE)){
@@ -261,7 +283,7 @@ public class StaXParser {
             	}
             }
   
-          // If we reach the end of an item element, we add it to the list
+// If we reach the end of an item element, we add it to the list
           }
           if (event.isEndElement()) {
             EndElement endElement = event.asEndElement();
@@ -271,13 +293,15 @@ public class StaXParser {
               System.out.println(item.getbpmn_id());
               System.out.println(item.getname());
               System.out.println("Koniec elementu");
-            }else if(endElement.getName().getLocalPart() == (TASK)){
+            }else if(endElement.getName().getLocalPart() == (TASK)
+            		|| endElement.getName().getLocalPart() == (POOL) ){
             	items.add(zadanie);
                 System.out.println(zadanie.getbpmn_id());
                 System.out.println(zadanie.getname());
                 System.out.println("Koniec elementu");
             }
-            else if(endElement.getName().getLocalPart() == (SEQENCEFLOW)){
+            else if(endElement.getName().getLocalPart() == (SEQENCEFLOW)
+            		|| endElement.getName().getLocalPart() == (MESSAGEFLOW)){
             	items.add(seqflow);
                 System.out.println(seqflow);
                 System.out.println("Koniec elementu");
